@@ -198,290 +198,103 @@ class EstruturaDadosApp {
         const modalBody = document.getElementById('modal-body');
 
         const exercises = {
-            lista: {
-                title: 'Implementação de Lista Encadeada',
+            'lista': {
+                title: 'Lista Encadeada',
                 content: `
-                    <div class="exercise-content">
-                        <h4>Exercício:</h4>
-                        <p>Complete o código abaixo para implementar uma lista encadeada simples:</p>
-                        <div class="code-block">
-                            <pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-typedef struct Node {
+                    <h4>Implemente uma lista encadeada simples</h4>
+                    <p>Complete as funções para criar, inserir e remover elementos de uma lista encadeada.</p>
+                    <div class="code-exercise">
+                        <pre><code>typedef struct Node {
     int data;
     struct Node* next;
 } Node;
 
-// Função para criar um novo nó
-Node* createNode(int value) {
-    // COMPLETE AQUI
-}
-
-// Função para inserir no início
-void insertAtBeginning(Node** head, int value) {
-    // COMPLETE AQUI
-}
-
-// Função para inserir no final
-void insertAtEnd(Node** head, int value) {
-    // COMPLETE AQUI
-}
-
-// Função para remover um elemento
-void deleteNode(Node** head, int value) {
-    // COMPLETE AQUI
-}
-
-// Função para imprimir a lista
-void printList(Node* head) {
-    // COMPLETE AQUI
-}</code></pre>
-                        </div>
-                        
-                        <div class="solution-toggle">
-                            <button class="btn btn-outline" onclick="toggleSolution('lista-solution')">
-                                Ver Solução
-                            </button>
-                        </div>
-                        
-                        <div id="lista-solution" class="solution" style="display: none;">
-                            <h4>Solução:</h4>
-                            <div class="code-block">
-                                <pre><code>Node* createNode(int value) {
-    Node* newNode = (Node*)malloc(sizeof(Node));
-    newNode->data = value;
-    newNode->next = NULL;
-    return newNode;
-}
-
-void insertAtBeginning(Node** head, int value) {
-    Node* newNode = createNode(value);
-    newNode->next = *head;
-    *head = newNode;
-}
-
-void insertAtEnd(Node** head, int value) {
-    Node* newNode = createNode(value);
-    if (*head == NULL) {
-        *head = newNode;
-        return;
-    }
-    Node* current = *head;
-    while (current->next != NULL) {
-        current = current->next;
-    }
-    current->next = newNode;
-}
-
-void deleteNode(Node** head, int value) {
-    if (*head == NULL) return;
-    
-    if ((*head)->data == value) {
-        Node* temp = *head;
-        *head = (*head)->next;
-        free(temp);
-        return;
-    }
-    
-    Node* current = *head;
-    while (current->next != NULL && current->next->data != value) {
-        current = current->next;
-    }
-    
-    if (current->next != NULL) {
-        Node* temp = current->next;
-        current->next = temp->next;
-        free(temp);
-    }
-}
-
-void printList(Node* head) {
-    Node* current = head;
-    while (current != NULL) {
-        printf("%d -> ", current->data);
-        current = current->next;
-    }
-    printf("NULL\\n");
-}</code></pre>
-                            </div>
-                        </div>
+Node* createNode(int value);
+void insertAtBeginning(Node** head, int value);
+void insertAtEnd(Node** head, int value);
+void deleteNode(Node** head, int value);
+void printList(Node* head);</code></pre>
                     </div>
                 `
             },
-            pilha: {
-                title: 'Implementação de Pilha',
+            'pilha': {
+                title: 'Pilha',
                 content: `
-                    <div class="exercise-content">
-                        <h4>Exercício:</h4>
-                        <p>Implemente uma pilha usando vetor com as operações push, pop e peek:</p>
-                        <div class="code-block">
-                            <pre><code>#define MAX 100
-
-typedef struct {
+                    <h4>Implemente uma pilha usando vetor</h4>
+                    <p>Complete as funções push, pop e peek para uma pilha.</p>
+                    <div class="code-exercise">
+                        <pre><code>typedef struct {
     int data[MAX];
     int top;
 } Stack;
 
-// Inicializar pilha
-void initStack(Stack* s) {
-    // COMPLETE AQUI
-}
-
-// Verificar se está vazia
-int isEmpty(Stack* s) {
-    // COMPLETE AQUI
-}
-
-// Verificar se está cheia
-int isFull(Stack* s) {
-    // COMPLETE AQUI
-}
-
-// Empilhar elemento
-void push(Stack* s, int value) {
-    // COMPLETE AQUI
-}
-
-// Desempilhar elemento
-int pop(Stack* s) {
-    // COMPLETE AQUI
-}
-
-// Ver elemento do topo
-int peek(Stack* s) {
-    // COMPLETE AQUI
-}</code></pre>
-                        </div>
-                        
-                        <div class="solution-toggle">
-                            <button class="btn btn-outline" onclick="toggleSolution('pilha-solution')">
-                                Ver Solução
-                            </button>
-                        </div>
-                        
-                        <div id="pilha-solution" class="solution" style="display: none;">
-                            <h4>Solução:</h4>
-                            <div class="code-block">
-                                <pre><code>void initStack(Stack* s) {
-    s->top = -1;
-}
-
-int isEmpty(Stack* s) {
-    return s->top == -1;
-}
-
-int isFull(Stack* s) {
-    return s->top == MAX - 1;
-}
-
-void push(Stack* s, int value) {
-    if (!isFull(s)) {
-        s->data[++s->top] = value;
-    }
-}
-
-int pop(Stack* s) {
-    if (!isEmpty(s)) {
-        return s->data[s->top--];
-    }
-    return -1; // erro
-}
-
-int peek(Stack* s) {
-    if (!isEmpty(s)) {
-        return s->data[s->top];
-    }
-    return -1; // erro
-}</code></pre>
-                            </div>
-                        </div>
+void push(Stack* s, int value);
+int pop(Stack* s);
+int peek(Stack* s);</code></pre>
                     </div>
                 `
             },
-            fila: {
-                title: 'Implementação de Fila Circular',
+            'fila': {
+                title: 'Fila Circular',
                 content: `
-                    <div class="exercise-content">
-                        <h4>Exercício:</h4>
-                        <p>Implemente uma fila circular usando vetor:</p>
-                        <div class="code-block">
-                            <pre><code>#define MAX 10
-
-typedef struct {
+                    <h4>Implemente uma fila circular</h4>
+                    <p>Complete as funções enqueue, dequeue e peek para uma fila circular.</p>
+                    <div class="code-exercise">
+                        <pre><code>typedef struct {
     int data[MAX];
     int front, rear;
     int size;
-} Queue;
+} CircularQueue;
 
-// Inicializar fila
-void initQueue(Queue* q) {
-    // COMPLETE AQUI
-}
+void enqueue(CircularQueue* q, int value);
+int dequeue(CircularQueue* q);
+int peek(CircularQueue* q);</code></pre>
+                    </div>
+                `
+            },
+            'arvore': {
+                title: 'Árvore Binária',
+                content: `
+                    <h4>Implemente uma árvore binária de busca</h4>
+                    <p>Complete as funções para inserir, buscar e percorrer uma árvore binária.</p>
+                    <div class="code-exercise">
+                        <pre><code>typedef struct Node {
+    int data;
+    struct Node* left, *right;
+} Node;
 
-// Verificar se está vazia
-int isEmpty(Queue* q) {
-    // COMPLETE AQUI
-}
+Node* insert(Node* root, int value);
+Node* search(Node* root, int value);
+void inorder(Node* root);</code></pre>
+                    </div>
+                `
+            },
+            'grafo': {
+                title: 'Grafo',
+                content: `
+                    <h4>Implemente um grafo com matriz de adjacência</h4>
+                    <p>Complete as funções para criar grafo e implementar BFS/DFS.</p>
+                    <div class="code-exercise">
+                        <pre><code>typedef struct {
+    int vertices;
+    int adjMatrix[MAX][MAX];
+} Graph;
 
-// Verificar se está cheia
-int isFull(Queue* q) {
-    // COMPLETE AQUI
-}
-
-// Enfileirar
-void enqueue(Queue* q, int value) {
-    // COMPLETE AQUI
-}
-
-// Desenfileirar
-int dequeue(Queue* q) {
-    // COMPLETE AQUI
-}</code></pre>
-                        </div>
-                        
-                        <div class="solution-toggle">
-                            <button class="btn btn-outline" onclick="toggleSolution('fila-solution')">
-                                Ver Solução
-                            </button>
-                        </div>
-                        
-                        <div id="fila-solution" class="solution" style="display: none;">
-                            <h4>Solução:</h4>
-                            <div class="code-block">
-                                <pre><code>void initQueue(Queue* q) {
-    q->front = 0;
-    q->rear = -1;
-    q->size = 0;
-}
-
-int isEmpty(Queue* q) {
-    return q->size == 0;
-}
-
-int isFull(Queue* q) {
-    return q->size == MAX;
-}
-
-void enqueue(Queue* q, int value) {
-    if (!isFull(q)) {
-        q->rear = (q->rear + 1) % MAX;
-        q->data[q->rear] = value;
-        q->size++;
-    }
-}
-
-int dequeue(Queue* q) {
-    if (!isEmpty(q)) {
-        int value = q->data[q->front];
-        q->front = (q->front + 1) % MAX;
-        q->size--;
-        return value;
-    }
-    return -1; // fila vazia
-}</code></pre>
-                            </div>
-                        </div>
+void addEdge(Graph* g, int src, int dest);
+void BFS(Graph* g, int start);
+void DFS(Graph* g, int start);</code></pre>
+                    </div>
+                `
+            },
+            'ordenacao': {
+                title: 'Algoritmos de Ordenação',
+                content: `
+                    <h4>Implemente algoritmos de ordenação</h4>
+                    <p>Complete as funções para bubble sort, selection sort e quick sort.</p>
+                    <div class="code-exercise">
+                        <pre><code>void bubbleSort(int arr[], int n);
+void selectionSort(int arr[], int n);
+void quickSort(int arr[], int low, int high);</code></pre>
                     </div>
                 `
             }
@@ -498,6 +311,36 @@ int dequeue(Queue* q) {
         const modal = document.getElementById('exercise-modal');
         modal.style.display = 'none';
     }
+
+    // Função para mostrar modais específicos dos exercícios
+    showSpecificExercise(exerciseType) {
+        const modalId = `${exerciseType}-modal`;
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'block';
+        }
+    }
+
+    // Função para fechar modais específicos
+    closeSpecificModal(exerciseType) {
+        const modalId = `${exerciseType}-modal`;
+        const modal = document.getElementById(modalId);
+        if (modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    // Função para alternar solução
+    toggleSolution(solutionId) {
+        const solution = document.getElementById(solutionId);
+        if (solution) {
+            if (solution.style.display === 'none' || solution.style.display === '') {
+                solution.style.display = 'block';
+            } else {
+                solution.style.display = 'none';
+            }
+        }
+    }
 }
 
 // Global functions
@@ -508,22 +351,53 @@ function scrollToSection(sectionId) {
     }
 }
 
-function showExercise(type) {
-    app.showExercise(type);
+function showExercise(exerciseType) {
+    const modalId = `${exerciseType}-modal`;
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function closeModal() {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach(modal => {
+        modal.style.display = 'none';
+    });
 }
 
 function toggleSolution(solutionId) {
     const solution = document.getElementById(solutionId);
-    const button = event.target;
-    
-    if (solution.style.display === 'none') {
-        solution.style.display = 'block';
-        button.textContent = 'Ocultar Solução';
-    } else {
-        solution.style.display = 'none';
-        button.textContent = 'Ver Solução';
+    if (solution) {
+        if (solution.style.display === 'none' || solution.style.display === '') {
+            solution.style.display = 'block';
+        } else {
+            solution.style.display = 'none';
+        }
     }
 }
+
+// Setup modal event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Close modals when clicking on X
+    document.querySelectorAll('.close').forEach(closeBtn => {
+        closeBtn.addEventListener('click', closeModal);
+    });
+
+    // Close modals when clicking outside
+    window.addEventListener('click', (e) => {
+        if (e.target.classList.contains('modal')) {
+            closeModal();
+        }
+    });
+
+    // Close modals with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+});
 
 // Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {

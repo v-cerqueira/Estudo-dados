@@ -921,6 +921,720 @@ void addEdge(Graph* g, int src, int dest) {
         </div>
     </div>
 
+    <!-- Exercise Modals -->
+    <div id="lista-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📋 Exercício: Lista Encadeada</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="exercise-content">
+                    <h4>🎯 Objetivo</h4>
+                    <p>Implemente uma lista encadeada simples com inserção e remoção de elementos.</p>
+                    
+                    <h4>📝 Enunciado</h4>
+                    <p>Complete o código abaixo para implementar uma lista encadeada simples:</p>
+                    
+                    <div class="code-block">
+                        <h5>Estrutura e Funções:</h5>
+                        <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+// Função para criar um novo nó
+Node* createNode(int value) {
+    // COMPLETE AQUI
+}
+
+// Função para inserir no início
+void insertAtBeginning(Node** head, int value) {
+    // COMPLETE AQUI
+}
+
+// Função para inserir no final
+void insertAtEnd(Node** head, int value) {
+    // COMPLETE AQUI
+}
+
+// Função para remover um elemento
+void deleteNode(Node** head, int value) {
+    // COMPLETE AQUI
+}
+
+// Função para imprimir a lista
+void printList(Node* head) {
+    // COMPLETE AQUI
+}</code></pre>
+                    </div>
+                    
+                    <div class="solution-toggle">
+                        <button class="btn btn-outline" onclick="toggleSolution('lista-solution')">
+                            👁️ Ver Solução
+                        </button>
+                    </div>
+                    
+                    <div id="lista-solution" class="solution" style="display: none;">
+                        <h4>✅ Solução Completa:</h4>
+                        <pre><code>Node* createNode(int value) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    return newNode;
+}
+
+void insertAtBeginning(Node** head, int value) {
+    Node* newNode = createNode(value);
+    newNode->next = *head;
+    *head = newNode;
+}
+
+void insertAtEnd(Node** head, int value) {
+    Node* newNode = createNode(value);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    Node* current = *head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    current->next = newNode;
+}
+
+void deleteNode(Node** head, int value) {
+    if (*head == NULL) return;
+    
+    if ((*head)->data == value) {
+        Node* temp = *head;
+        *head = (*head)->next;
+        free(temp);
+        return;
+    }
+    
+    Node* current = *head;
+    while (current->next != NULL && current->next->data != value) {
+        current = current->next;
+    }
+    
+    if (current->next != NULL) {
+        Node* temp = current->next;
+        current->next = temp->next;
+        free(temp);
+    }
+}
+
+void printList(Node* head) {
+    Node* current = head;
+    while (current != NULL) {
+        printf("%d -> ", current->data);
+        current = current->next;
+    }
+    printf("NULL\n");
+}</code></pre>
+                        
+                        <h4>🔍 Pontos Importantes:</h4>
+                        <ul>
+                            <li><strong>Alocação de memória:</strong> Sempre use malloc() para criar novos nós</li>
+                            <li><strong>Liberação de memória:</strong> Use free() ao remover nós</li>
+                            <li><strong>Ponteiros:</strong> Atualize corretamente os ponteiros next</li>
+                            <li><strong>Verificações:</strong> Sempre verifique se a lista está vazia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pilha-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📚 Exercício: Pilha</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="exercise-content">
+                    <h4>🎯 Objetivo</h4>
+                    <p>Implemente uma pilha usando vetor com as operações push, pop e peek.</p>
+                    
+                    <h4>📝 Enunciado</h4>
+                    <p>Complete o código abaixo para implementar uma pilha:</p>
+                    
+                    <div class="code-block">
+                        <h5>Estrutura e Funções:</h5>
+                        <pre><code>#define MAX 100
+
+typedef struct {
+    int data[MAX];
+    int top;
+} Stack;
+
+// Inicializar pilha
+void initStack(Stack* s) {
+    // COMPLETE AQUI
+}
+
+// Verificar se está vazia
+int isEmpty(Stack* s) {
+    // COMPLETE AQUI
+}
+
+// Verificar se está cheia
+int isFull(Stack* s) {
+    // COMPLETE AQUI
+}
+
+// Empilhar elemento
+void push(Stack* s, int value) {
+    // COMPLETE AQUI
+}
+
+// Desempilhar elemento
+int pop(Stack* s) {
+    // COMPLETE AQUI
+}
+
+// Ver elemento do topo
+int peek(Stack* s) {
+    // COMPLETE AQUI
+}</code></pre>
+                    </div>
+                    
+                    <div class="solution-toggle">
+                        <button class="btn btn-outline" onclick="toggleSolution('pilha-solution')">
+                            👁️ Ver Solução
+                        </button>
+                    </div>
+                    
+                    <div id="pilha-solution" class="solution" style="display: none;">
+                        <h4>✅ Solução Completa:</h4>
+                        <pre><code>void initStack(Stack* s) {
+    s->top = -1;
+}
+
+int isEmpty(Stack* s) {
+    return s->top == -1;
+}
+
+int isFull(Stack* s) {
+    return s->top == MAX - 1;
+}
+
+void push(Stack* s, int value) {
+    if (isFull(s)) {
+        printf("Pilha cheia!\n");
+        return;
+    }
+    s->data[++s->top] = value;
+}
+
+int pop(Stack* s) {
+    if (isEmpty(s)) {
+        printf("Pilha vazia!\n");
+        return -1;
+    }
+    return s->data[s->top--];
+}
+
+int peek(Stack* s) {
+    if (isEmpty(s)) {
+        printf("Pilha vazia!\n");
+        return -1;
+    }
+    return s->data[s->top];
+}</code></pre>
+                        
+                        <h4>🔍 Pontos Importantes:</h4>
+                        <ul>
+                            <li><strong>Top inicial:</strong> Começa em -1 (pilha vazia)</li>
+                            <li><strong>Push:</strong> Incrementa top antes de inserir</li>
+                            <li><strong>Pop:</strong> Retorna valor e decrementa top</li>
+                            <li><strong>Verificações:</strong> Sempre verifique se está vazia/cheia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fila-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🔄 Exercício: Fila Circular</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="exercise-content">
+                    <h4>🎯 Objetivo</h4>
+                    <p>Implemente uma fila circular usando vetor com as operações enqueue, dequeue e peek.</p>
+                    
+                    <h4>📝 Enunciado</h4>
+                    <p>Complete o código abaixo para implementar uma fila circular:</p>
+                    
+                    <div class="code-block">
+                        <h5>Estrutura e Funções:</h5>
+                        <pre><code>#define MAX 100
+
+typedef struct {
+    int data[MAX];
+    int front;
+    int rear;
+    int size;
+} CircularQueue;
+
+// Inicializar fila
+void initQueue(CircularQueue* q) {
+    // COMPLETE AQUI
+}
+
+// Verificar se está vazia
+int isEmpty(CircularQueue* q) {
+    // COMPLETE AQUI
+}
+
+// Verificar se está cheia
+int isFull(CircularQueue* q) {
+    // COMPLETE AQUI
+}
+
+// Inserir elemento
+void enqueue(CircularQueue* q, int value) {
+    // COMPLETE AQUI
+}
+
+// Remover elemento
+int dequeue(CircularQueue* q) {
+    // COMPLETE AQUI
+}
+
+// Ver primeiro elemento
+int peek(CircularQueue* q) {
+    // COMPLETE AQUI
+}</code></pre>
+                    </div>
+                    
+                    <div class="solution-toggle">
+                        <button class="btn btn-outline" onclick="toggleSolution('fila-solution')">
+                            👁️ Ver Solução
+                        </button>
+                    </div>
+                    
+                    <div id="fila-solution" class="solution" style="display: none;">
+                        <h4>✅ Solução Completa:</h4>
+                        <pre><code>void initQueue(CircularQueue* q) {
+    q->front = 0;
+    q->rear = -1;
+    q->size = 0;
+}
+
+int isEmpty(CircularQueue* q) {
+    return q->size == 0;
+}
+
+int isFull(CircularQueue* q) {
+    return q->size == MAX;
+}
+
+void enqueue(CircularQueue* q, int value) {
+    if (isFull(q)) {
+        printf("Fila cheia!\n");
+        return;
+    }
+    q->rear = (q->rear + 1) % MAX;
+    q->data[q->rear] = value;
+    q->size++;
+}
+
+int dequeue(CircularQueue* q) {
+    if (isEmpty(q)) {
+        printf("Fila vazia!\n");
+        return -1;
+    }
+    int value = q->data[q->front];
+    q->front = (q->front + 1) % MAX;
+    q->size--;
+    return value;
+}
+
+int peek(CircularQueue* q) {
+    if (isEmpty(q)) {
+        printf("Fila vazia!\n");
+        return -1;
+    }
+    return q->data[q->front];
+}</code></pre>
+                        
+                        <h4>🔍 Pontos Importantes:</h4>
+                        <ul>
+                            <li><strong>Operador módulo:</strong> Use % MAX para voltar ao início</li>
+                            <li><strong>Controle de tamanho:</strong> Use size para verificar vazio/cheio</li>
+                            <li><strong>Front e Rear:</strong> Atualize corretamente os índices</li>
+                            <li><strong>Circularidade:</strong> (rear + 1) % MAX e (front + 1) % MAX</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="arvore-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🌳 Exercício: Árvore Binária</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="exercise-content">
+                    <h4>🎯 Objetivo</h4>
+                    <p>Implemente uma árvore binária de busca com inserção, busca e percorrimentos.</p>
+                    
+                    <h4>📝 Enunciado</h4>
+                    <p>Complete o código abaixo para implementar uma árvore binária:</p>
+                    
+                    <div class="code-block">
+                        <h5>Estrutura e Funções:</h5>
+                        <pre><code>typedef struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+} Node;
+
+// Criar novo nó
+Node* createNode(int value) {
+    // COMPLETE AQUI
+}
+
+// Inserir elemento
+Node* insert(Node* root, int value) {
+    // COMPLETE AQUI
+}
+
+// Buscar elemento
+Node* search(Node* root, int value) {
+    // COMPLETE AQUI
+}
+
+// Percorrimento em ordem (inorder)
+void inorder(Node* root) {
+    // COMPLETE AQUI
+}
+
+// Percorrimento pré-ordem (preorder)
+void preorder(Node* root) {
+    // COMPLETE AQUI
+}
+
+// Percorrimento pós-ordem (postorder)
+void postorder(Node* root) {
+    // COMPLETE AQUI
+}</code></pre>
+                    </div>
+                    
+                    <div class="solution-toggle">
+                        <button class="btn btn-outline" onclick="toggleSolution('arvore-solution')">
+                            👁️ Ver Solução
+                        </button>
+                    </div>
+                    
+                    <div id="arvore-solution" class="solution" style="display: none;">
+                        <h4>✅ Solução Completa:</h4>
+                        <pre><code>Node* createNode(int value) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = value;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+Node* insert(Node* root, int value) {
+    if (root == NULL) {
+        return createNode(value);
+    }
+    
+    if (value < root->data) {
+        root->left = insert(root->left, value);
+    } else if (value > root->data) {
+        root->right = insert(root->right, value);
+    }
+    
+    return root;
+}
+
+Node* search(Node* root, int value) {
+    if (root == NULL || root->data == value) {
+        return root;
+    }
+    
+    if (value < root->data) {
+        return search(root->left, value);
+    }
+    
+    return search(root->right, value);
+}
+
+void inorder(Node* root) {
+    if (root != NULL) {
+        inorder(root->left);
+        printf("%d ", root->data);
+        inorder(root->right);
+    }
+}
+
+void preorder(Node* root) {
+    if (root != NULL) {
+        printf("%d ", root->data);
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+
+void postorder(Node* root) {
+    if (root != NULL) {
+        postorder(root->left);
+        postorder(root->right);
+        printf("%d ", root->data);
+    }
+}</code></pre>
+                        
+                        <h4>🔍 Pontos Importantes:</h4>
+                        <ul>
+                            <li><strong>Recursão:</strong> Use recursão para navegar na árvore</li>
+                            <li><strong>Comparação:</strong> Menor vai para esquerda, maior para direita</li>
+                            <li><strong>Percorrimentos:</strong> Inorder = ordenado, Preorder = raiz primeiro</li>
+                            <li><strong>Alocação:</strong> Sempre aloque memória para novos nós</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="grafo-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🕸️ Exercício: Grafo</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="exercise-content">
+                    <h4>🎯 Objetivo</h4>
+                    <p>Implemente um grafo usando matriz de adjacência com busca em largura (BFS) e profundidade (DFS).</p>
+                    
+                    <h4>📝 Enunciado</h4>
+                    <p>Complete o código abaixo para implementar um grafo:</p>
+                    
+                    <div class="code-block">
+                        <h5>Estrutura e Funções:</h5>
+                        <pre><code>#define MAX_VERTICES 100
+
+typedef struct {
+    int vertices;
+    int adjMatrix[MAX_VERTICES][MAX_VERTICES];
+} Graph;
+
+// Inicializar grafo
+void initGraph(Graph* g, int vertices) {
+    // COMPLETE AQUI
+}
+
+// Adicionar aresta
+void addEdge(Graph* g, int src, int dest) {
+    // COMPLETE AQUI
+}
+
+// Busca em Largura (BFS)
+void BFS(Graph* g, int startVertex) {
+    // COMPLETE AQUI
+}
+
+// Busca em Profundidade (DFS)
+void DFS(Graph* g, int startVertex) {
+    // COMPLETE AQUI
+}</code></pre>
+                    </div>
+                    
+                    <div class="solution-toggle">
+                        <button class="btn btn-outline" onclick="toggleSolution('grafo-solution')">
+                            👁️ Ver Solução
+                        </button>
+                    </div>
+                    
+                    <div id="grafo-solution" class="solution" style="display: none;">
+                        <h4>✅ Solução Completa:</h4>
+                        <pre><code>void initGraph(Graph* g, int vertices) {
+    g->vertices = vertices;
+    for (int i = 0; i < vertices; i++) {
+        for (int j = 0; j < vertices; j++) {
+            g->adjMatrix[i][j] = 0;
+        }
+    }
+}
+
+void addEdge(Graph* g, int src, int dest) {
+    g->adjMatrix[src][dest] = 1;
+    g->adjMatrix[dest][src] = 1; // Para grafo não dirigido
+}
+
+void BFS(Graph* g, int startVertex) {
+    bool visited[MAX_VERTICES] = {false};
+    int queue[MAX_VERTICES];
+    int front = 0, rear = 0;
+    
+    visited[startVertex] = true;
+    queue[rear++] = startVertex;
+    
+    printf("BFS: ");
+    while (front < rear) {
+        int vertex = queue[front++];
+        printf("%d ", vertex);
+        
+        for (int i = 0; i < g->vertices; i++) {
+            if (g->adjMatrix[vertex][i] && !visited[i]) {
+                visited[i] = true;
+                queue[rear++] = i;
+            }
+        }
+    }
+    printf("\n");
+}
+
+void DFS(Graph* g, int startVertex) {
+    bool visited[MAX_VERTICES] = {false};
+    printf("DFS: ");
+    DFSUtil(g, startVertex, visited);
+    printf("\n");
+}
+
+void DFSUtil(Graph* g, int vertex, bool visited[]) {
+    visited[vertex] = true;
+    printf("%d ", vertex);
+    
+    for (int i = 0; i < g->vertices; i++) {
+        if (g->adjMatrix[vertex][i] && !visited[i]) {
+            DFSUtil(g, i, visited);
+        }
+    }
+}</code></pre>
+                        
+                        <h4>🔍 Pontos Importantes:</h4>
+                        <ul>
+                            <li><strong>Matriz de adjacência:</strong> 1 = aresta existe, 0 = não existe</li>
+                            <li><strong>BFS:</strong> Usa fila, visita vizinhos primeiro</li>
+                            <li><strong>DFS:</strong> Usa recursão, vai até o final</li>
+                            <li><strong>Visited array:</strong> Evita visitar o mesmo vértice</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="ordenacao-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📊 Exercício: Algoritmos de Ordenação</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="exercise-content">
+                    <h4>🎯 Objetivo</h4>
+                    <p>Implemente os algoritmos de ordenação Bubble Sort, Selection Sort e Quick Sort.</p>
+                    
+                    <h4>📝 Enunciado</h4>
+                    <p>Complete o código abaixo para implementar os algoritmos de ordenação:</p>
+                    
+                    <div class="code-block">
+                        <h5>Funções:</h5>
+                        <pre><code>// Bubble Sort
+void bubbleSort(int arr[], int n) {
+    // COMPLETE AQUI
+}
+
+// Selection Sort
+void selectionSort(int arr[], int n) {
+    // COMPLETE AQUI
+}
+
+// Quick Sort - Função de partição
+int partition(int arr[], int low, int high) {
+    // COMPLETE AQUI
+}
+
+// Quick Sort
+void quickSort(int arr[], int low, int high) {
+    // COMPLETE AQUI
+}</code></pre>
+                    </div>
+                    
+                    <div class="solution-toggle">
+                        <button class="btn btn-outline" onclick="toggleSolution('ordenacao-solution')">
+                            👁️ Ver Solução
+                        </button>
+                    </div>
+                    
+                    <div id="ordenacao-solution" class="solution" style="display: none;">
+                        <h4>✅ Solução Completa:</h4>
+                        <pre><code>void bubbleSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                swap(&arr[j], &arr[j+1]);
+            }
+        }
+    }
+}
+
+void selectionSort(int arr[], int n) {
+    for (int i = 0; i < n-1; i++) {
+        int min_idx = i;
+        for (int j = i+1; j < n; j++) {
+            if (arr[j] < arr[min_idx]) {
+                min_idx = j;
+            }
+        }
+        swap(&arr[min_idx], &arr[i]);
+    }
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low - 1);
+    
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);
+        quickSort(arr, low, pi - 1);
+        quickSort(arr, pi + 1, high);
+    }
+}</code></pre>
+                        
+                        <h4>🔍 Pontos Importantes:</h4>
+                        <ul>
+                            <li><strong>Bubble Sort:</strong> O(n²), compara elementos adjacentes</li>
+                            <li><strong>Selection Sort:</strong> O(n²), encontra mínimo e troca</li>
+                            <li><strong>Quick Sort:</strong> O(n log n), usa pivô e partição</li>
+                            <li><strong>Complexidade:</strong> Bubble/Selection = O(n²), Quick = O(n log n)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/quiz.js"></script>
