@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste do Sistema de Prova</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background: #00ffff;
+            color: #000;
+        }
+        .btn-secondary {
+            background: #666;
+            color: #fff;
+        }
+        .quiz-setup {
+            text-align: center;
+        }
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .option-group label {
+            font-weight: 600;
+        }
+        .option-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 1rem;
+        }
+        .quiz-interface {
+            display: none;
+        }
+        .quiz-results {
+            display: none;
+        }
+        .question-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        .options-container {
+            display: grid;
+            gap: 1rem;
+        }
+        .option-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .option-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .option-item.selected {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: #00ffff;
+        }
+        .option-item.correct {
+            background: rgba(0, 255, 0, 0.2);
+            border-color: #00ff00;
+        }
+        .option-item.incorrect {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: #ff0000;
+        }
+        .option-letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background: #00ffff;
+            color: #000;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+        .explanation-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .correct-feedback {
+            color: #00ff00;
+            font-weight: bold;
+        }
+        .incorrect-feedback {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        .study-summary {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .study-section {
+            margin-bottom: 1.5rem;
+        }
+        .study-section h5 {
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+        .study-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .study-section li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quiz-setup" id="quiz-setup">
+            <h3>Configuração da Prova</h3>
+            <div class="quiz-options">
+                <div class="option-group">
+                    <label>Número de Questões:</label>
+                    <select id="question-count">
+                        <option value="5">5 questões</option>
+                        <option value="10">10 questões</option>
+                        <option value="20">20 questões</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label>Dificuldade:</label>
+                    <select id="difficulty">
+                        <option value="all">Todas as dificuldades</option>
+                        <option value="easy">Fácil</option>
+                        <option value="medium">Médio</option>
+                        <option value="hard">Difícil</option>
+                        <option value="mega">Mega Difícil</option>
+                    </select>
+                </div>
+                <div class="option-group">
+                    <label>Tópico:</label>
+                    <select id="topic">
+                        <option value="all">Todos os tópicos</option>
+                        <option value="conceitos">Conceitos Fundamentais</option>
+                        <option value="listas">Listas Encadeadas</option>
+                        <option value="pilhas">Pilhas</option>
+                        <option value="filas">Filas</option>
+                        <option value="arvores">Árvores</option>
+                        <option value="grafos">Grafos</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary" onclick="startQuiz()">Iniciar Prova</button>
+        </div>
+
+        <div class="quiz-interface" id="quiz-interface">
+            <div class="quiz-header">
+                <div class="quiz-info">
+                    <span id="question-counter">Questão 1 de 10</span>
+                    <span id="quiz-timer">Tempo: 00:00</span>
+                </div>
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill" style="width: 0%; height: 8px; background: #00ffff; border-radius: 4px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <h3 id="question-text">Carregando questão...</h3>
+                <div class="options-container" id="options-container">
+                    <!-- Opções serão carregadas aqui -->
+                </div>
+            </div>
+
+            <div class="quiz-controls">
+                <button class="btn btn-secondary" onclick="previousQuestion()" id="prev-btn">Anterior</button>
+                <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn">Próxima</button>
+                <button class="btn btn-primary" onclick="finishQuiz()" id="finish-btn" style="display: none;">Finalizar</button>
+            </div>
+        </div>
+
+        <div class="quiz-results" id="quiz-results">
+            <h3>Resultado da Prova</h3>
+            <div class="results-summary">
+                <div class="result-item">
+                    <span>Nota: <strong id="final-score">0</strong>/10</span>
+                </div>
+                <div class="result-item">
+                    <span>Acertos: <strong id="correct-answers">0</strong></span>
+                </div>
+                <div class="result-item">
+                    <span>Erros: <strong id="wrong-answers">0</strong></span>
+                </div>
+                <div class="result-item">
+                    <span>Tempo: <strong id="total-time">00:00</strong></span>
+                </div>
+            </div>
+            <div class="quiz-actions">
+                <button class="btn btn-primary" onclick="reviewQuiz()">Revisar Respostas</button>
+                <button class="btn btn-secondary" onclick="newQuiz()">Nova Prova</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/quiz.js"></script>
+</body>
+</html> 

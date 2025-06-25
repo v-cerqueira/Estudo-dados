@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material de Estudo - Estrutura de Dados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #e74c3c;
+            font-size: 1.8em;
+            margin: 30px 0 15px 0;
+            border-left: 4px solid #e74c3c;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #2980b9;
+            font-size: 1.4em;
+            margin: 25px 0 10px 0;
+        }
+        
+        h4 {
+            color: #27ae60;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+        
+        .toc {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .toc h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .toc ul {
+            list-style: none;
+        }
+        
+        .toc li {
+            margin: 8px 0;
+        }
+        
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .toc a:hover {
+            color: #e74c3c;
+            text-decoration: underline;
+        }
+        
+        .question {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .answer {
+            background: #e8f5e8;
+            padding: 15px;
+            border-left: 4px solid #27ae60;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+            margin: 10px 0;
+        }
+        
+        .tip {
+            background: #d1ecf1;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #17a2b8;
+            margin: 15px 0;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .comparison-table th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e8f4f8;
+        }
+        
+        .section {
+            margin: 40px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .exercise {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 2px solid #dee2e6;
+        }
+        
+        .exercise h4 {
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        
+        .solution {
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .important {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #dc3545;
+            margin: 15px 0;
+        }
+        
+        .success {
+            background: #d1e7dd;
+            color: #0f5132;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #198754;
+            margin: 15px 0;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        .nav-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        
+        .nav-btn:hover {
+            background: #2980b9;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .nav-buttons {
+                position: static;
+                margin: 20px 0;
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-buttons">
+        <button class="nav-btn" onclick="scrollToSection('conceitos')">Conceitos</button>
+        <button class="nav-btn" onclick="scrollToSection('listas')">Listas</button>
+        <button class="nav-btn" onclick="scrollToSection('pilhas')">Pilhas</button>
+        <button class="nav-btn" onclick="scrollToSection('filas')">Filas</button>
+        <button class="nav-btn" onclick="scrollToSection('exercicios')">Exercícios</button>
+        <button class="nav-btn" onclick="scrollToSection('resumo')">Resumo</button>
+    </div>
+
+    <div class="container">
+        <h1>📚 MATERIAL DE ESTUDO - ESTRUTURA DE DADOS</h1>
+        <p class="subtitle">2º Bimestre - Preparação Completa para Prova</p>
+
+        <div class="toc">
+            <h3>📋 ÍNDICE</h3>
+            <ul>
+                <li><a href="#conceitos">1. Conceitos Fundamentais</a></li>
+                <li><a href="#listas">2. Listas Encadeadas</a></li>
+                <li><a href="#pilhas">3. Pilhas</a></li>
+                <li><a href="#filas">4. Filas</a></li>
+                <li><a href="#vetores">5. Vetores e Matrizes</a></li>
+                <li><a href="#exercicios">6. Exercícios Práticos</a></li>
+                <li><a href="#questoes">7. Questões de Múltipla Escolha</a></li>
+                <li><a href="#resumo">8. Resumo Executivo</a></li>
+            </ul>
+        </div>
+
+        <!-- 1. CONCEITOS FUNDAMENTAIS -->
+        <div id="conceitos" class="section">
+            <h2>1. CONCEITOS FUNDAMENTAIS</h2>
+            
+            <div class="question">
+                <h4>O que são dados em Tecnologia da Informação?</h4>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> Dados são elementos brutos e isolados que representam aspectos da realidade. São a matéria-prima que, quando processada, se transforma em informação útil.
+            </div>
+
+            <h3>Estruturas Homogêneas vs Heterogêneas</h3>
+            <div class="highlight">
+                <strong>Homogêneas:</strong> Armazenam apenas um tipo de dado (ex: vetor de inteiros)<br>
+                <strong>Heterogêneas:</strong> Armazenam diferentes tipos de dados (ex: struct)
+            </div>
+
+            <h3>Vetores (Arrays)</h3>
+            <ul>
+                <li>Estrutura de dados linear</li>
+                <li>Elementos armazenados em posições contínuas da memória</li>
+                <li>Acesso direto por índice</li>
+                <li>Tamanho fixo (desvantagem)</li>
+                <li>Alto custo para inserção/remoção no meio</li>
+            </ul>
+
+            <h3>Matrizes</h3>
+            <ul>
+                <li>Estrutura de dados bidimensional</li>
+                <li>Organizada em linhas e colunas</li>
+                <li>Útil para representar tabelas, imagens, etc.</li>
+            </ul>
+        </div>
+
+        <!-- 2. LISTAS ENCADEADAS -->
+        <div id="listas" class="section">
+            <h2>2. LISTAS ENCADEADAS</h2>
+            
+            <h3>Características das Listas Encadeadas</h3>
+            <ul>
+                <li>Cada nó contém um valor e um ponteiro para o próximo</li>
+                <li>Elementos NÃO são armazenados em posições contínuas</li>
+                <li>Tamanho dinâmico</li>
+                <li>Inserção e remoção eficientes em qualquer posição</li>
+            </ul>
+
+            <h3>Vantagens vs Vetores</h3>
+            <div class="highlight">
+                <strong>Vantagens:</strong> Tamanho dinâmico, inserção/remoção eficiente<br>
+                <strong>Desvantagens:</strong> Sem acesso direto, uso de ponteiros
+            </div>
+
+            <div class="question">
+                <h4>O que acontece com o ponteiro quando a lista está vazia?</h4>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> O ponteiro recebe NULL quando a lista está vazia.
+            </div>
+
+            <h3>Funções importantes em C</h3>
+            <ul>
+                <li><strong>malloc():</strong> Aloca memória dinamicamente</li>
+                <li><strong>free():</strong> Libera a memória alocada</li>
+            </ul>
+
+            <h3>Estrutura básica de um nó</h3>
+            <div class="code">
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+            </div>
+
+            <h3>Implementação Completa de Lista Encadeada</h3>
+            <div class="code">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+Node* createNode(int value) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    return newNode;
+}
+
+void insertAtEnd(Node** head, int value) {
+    Node* newNode = createNode(value);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    Node* current = *head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    current->next = newNode;
+}
+
+void printList(Node* head) {
+    Node* current = head;
+    while (current != NULL) {
+        printf("%d -> ", current->data);
+        current = current->next;
+    }
+    printf("NULL\\n");
+}
+            </div>
+        </div>
+
+        <!-- 3. PILHAS -->
+        <div id="pilhas" class="section">
+            <h2>3. PILHAS</h2>
+            
+            <h3>Características das Pilhas</h3>
+            <ul>
+                <li>Estrutura de dados linear</li>
+                <li>LIFO: Last In, First Out (último a entrar, primeiro a sair)</li>
+                <li>Operações: PUSH (empilhar) e POP (desempilhar)</li>
+                <li>Acesso apenas ao topo da pilha</li>
+            </ul>
+
+            <h3>Exemplos de uso</h3>
+            <ul>
+                <li>Chamadas de função (call stack)</li>
+                <li>Desfazer operações (undo)</li>
+                <li>Avaliação de expressões</li>
+                <li>Navegação em navegadores (botão voltar)</li>
+            </ul>
+
+            <h3>Implementação básica</h3>
+            <div class="code">
+#define MAX 100
+typedef struct {
+    int data[MAX];
+    int top;
+} Stack;
+
+void push(Stack* s, int value) {
+    if (s->top < MAX-1) {
+        s->data[++s->top] = value;
+    }
+}
+
+int pop(Stack* s) {
+    if (s->top >= 0) {
+        return s->data[s->top--];
+    }
+    return -1; // erro
+}
+
+int isEmpty(Stack* s) {
+    return s->top == -1;
+}
+
+int isFull(Stack* s) {
+    return s->top == MAX - 1;
+}
+            </div>
+        </div>
+
+        <!-- 4. FILAS -->
+        <div id="filas" class="section">
+            <h2>4. FILAS</h2>
+            
+            <h3>Características das Filas</h3>
+            <ul>
+                <li>Estrutura de dados linear</li>
+                <li>FIFO: First In, First Out (primeiro a entrar, primeiro a sair)</li>
+                <li>Inserção no final, remoção no início</li>
+                <li>Controle de ordem de execução</li>
+            </ul>
+
+            <h3>Exemplos reais</h3>
+            <ul>
+                <li>Fila de pessoas</li>
+                <li>Fila de impressão</li>
+                <li>Senhas em atendimento</li>
+                <li>Buffers de rede</li>
+                <li>Filas de processos</li>
+            </ul>
+
+            <h3>Implementação com vetor (Fila Circular)</h3>
+            <div class="code">
+#define MAX 10
+typedef struct {
+    int data[MAX];
+    int front, rear;
+    int size;
+} Queue;
+
+void initQueue(Queue* q) {
+    q->front = 0;
+    q->rear = -1;
+    q->size = 0;
+}
+
+void enqueue(Queue* q, int value) {
+    if (!isFull(q)) {
+        q->rear = (q->rear + 1) % MAX;
+        q->data[q->rear] = value;
+        q->size++;
+    }
+}
+
+int dequeue(Queue* q) {
+    if (!isEmpty(q)) {
+        int value = q->data[q->front];
+        q->front = (q->front + 1) % MAX;
+        q->size--;
+        return value;
+    }
+    return -1; // fila vazia
+}
+
+int isEmpty(Queue* q) {
+    return q->size == 0;
+}
+
+int isFull(Queue* q) {
+    return q->size == MAX;
+}
+            </div>
+        </div>
+
+        <!-- 5. VETORES E MATRIZES -->
+        <div id="vetores" class="section">
+            <h2>5. VETORES E MATRIZES</h2>
+            
+            <h3>Diferenças para estruturas dinâmicas</h3>
+            <div class="highlight">
+                <strong>Vetores/Matrizes:</strong> Tamanho fixo, acesso direto, memória contínua<br>
+                <strong>Pilhas/Listas/Filas:</strong> Tamanho dinâmico, operações específicas, flexibilidade
+            </div>
+
+            <div class="question">
+                <h4>Em um vetor de 10 posições, qual é o índice do último elemento?</h4>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> O índice do último elemento é 9, pois os índices começam em 0.
+            </div>
+
+            <h3>Índices em vetores</h3>
+            <ul>
+                <li>Primeiro elemento: índice 0</li>
+                <li>Último elemento: índice (tamanho - 1)</li>
+                <li>Exemplo: vetor de 10 posições, último elemento = índice 9</li>
+            </ul>
+        </div>
+
+        <!-- 6. EXERCÍCIOS PRÁTICOS -->
+        <div id="exercicios" class="section">
+            <h2>6. EXERCÍCIOS PRÁTICOS</h2>
+            
+            <div class="exercise">
+                <h4>EXERCÍCIO 1: Implementação de Lista Encadeada</h4>
+                <p>Complete o código abaixo para implementar uma lista encadeada simples:</p>
+                <div class="code">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+// Função para criar um novo nó
+Node* createNode(int value) {
+    // COMPLETE AQUI
+}
+
+// Função para inserir no início
+void insertAtBeginning(Node** head, int value) {
+    // COMPLETE AQUI
+}
+
+// Função para inserir no final
+void insertAtEnd(Node** head, int value) {
+    // COMPLETE AQUI
+}
+
+// Função para remover um elemento
+void deleteNode(Node** head, int value) {
+    // COMPLETE AQUI
+}
+
+// Função para imprimir a lista
+void printList(Node* head) {
+    // COMPLETE AQUI
+}
+                </div>
+                
+                <div class="solution">
+                    <h4>SOLUÇÃO:</h4>
+                    <div class="code">
+Node* createNode(int value) {
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->data = value;
+    newNode->next = NULL;
+    return newNode;
+}
+
+void insertAtBeginning(Node** head, int value) {
+    Node* newNode = createNode(value);
+    newNode->next = *head;
+    *head = newNode;
+}
+
+void insertAtEnd(Node** head, int value) {
+    Node* newNode = createNode(value);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    Node* current = *head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+    current->next = newNode;
+}
+
+void deleteNode(Node** head, int value) {
+    // COMPLETE AQUI
+}
+
+void printList(Node* head) {
+    // COMPLETE AQUI
+}
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h4>EXERCÍCIO 2: Implementação de Pilha</h4>
+                <p>Implemente uma pilha usando vetor com as operações push, pop e peek:</p>
+                <div class="code">
+#define MAX 100
+
+typedef struct {
+    int data[MAX];
+    int top;
+} Stack;
+
+// Inicializar pilha
+void initStack(Stack* s) {
+    // COMPLETE AQUI
+}
+
+// Verificar se está vazia
+int isEmpty(Stack* s) {
+    // COMPLETE AQUI
+}
+
+// Verificar se está cheia
+int isFull(Stack* s) {
+    // COMPLETE AQUI
+}
+
+// Empilhar elemento
+void push(Stack* s, int value) {
+    // COMPLETE AQUI
+}
+
+// Desempilhar elemento
+int pop(Stack* s) {
+    // COMPLETE AQUI
+}
+
+// Ver elemento do topo
+int peek(Stack* s) {
+    // COMPLETE AQUI
+}
+                </div>
+                
+                <div class="solution">
+                    <h4>SOLUÇÃO:</h4>
+                    <div class="code">
+void initStack(Stack* s) {
+    s->top = -1;
+}
+
+int isEmpty(Stack* s) {
+    return s->top == -1;
+}
+
+int isFull(Stack* s) {
+    return s->top == MAX - 1;
+}
+
+void push(Stack* s, int value) {
+    if (!isFull(s)) {
+        s->data[++s->top] = value;
+    }
+}
+
+int pop(Stack* s) {
+    if (!isEmpty(s)) {
+        return s->data[s->top--];
+    }
+    return -1; // erro
+}
+
+int peek(Stack* s) {
+    if (!isEmpty(s)) {
+        return s->data[s->top];
+    }
+    return -1; // erro
+}
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise">
+                <h4>EXERCÍCIO 3: Questões Conceituais</h4>
+                
+                <div class="question">
+                    <h4>1. Explique a diferença entre LIFO e FIFO com exemplos práticos.</h4>
+                </div>
+                <div class="answer">
+                    <strong>Resposta:</strong> LIFO (Last In, First Out): Último a entrar, primeiro a sair. Exemplo: Pilha de pratos, call stack de funções. FIFO (First In, First Out): Primeiro a entrar, primeiro a sair. Exemplo: Fila de pessoas, fila de impressão.
+                </div>
+
+                <div class="question">
+                    <h4>2. Qual a diferença entre alocação estática e dinâmica de memória?</h4>
+                </div>
+                <div class="answer">
+                    <strong>Resposta:</strong> Estática: Tamanho definido em tempo de compilação, memória alocada na stack. Dinâmica: Tamanho definido em tempo de execução, memória alocada na heap usando malloc/free.
+                </div>
+
+                <div class="question">
+                    <h4>3. Por que listas encadeadas são mais eficientes para inserção/remoção no meio?</h4>
+                </div>
+                <div class="answer">
+                    <strong>Resposta:</strong> Em vetores, inserção/remoção no meio requer deslocar todos os elementos seguintes. Em listas encadeadas, apenas os ponteiros são alterados, sem necessidade de deslocamento.
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. QUESTÕES DE MÚLTIPLA ESCOLHA -->
+        <div id="questoes" class="section">
+            <h2>7. QUESTÕES DE MÚLTIPLA ESCOLHA</h2>
+            
+            <div class="question">
+                <h4>1. O que caracteriza uma lista encadeada simples em C?</h4>
+                <p>a) Todos os elementos são armazenados em posições contínuas da memória</p>
+                <p>b) Cada nó aponta para o nó anterior</p>
+                <p>c) Cada nó contém um valor e um ponteiro para o próximo</p>
+                <p>d) É uma estrutura baseada em arquivos</p>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> c) Cada nó contém um valor e um ponteiro para o próximo<br>
+                <strong>Explicação:</strong> Listas encadeadas usam ponteiros para conectar os nós, não armazenam dados em posições contínuas.
+            </div>
+
+            <div class="question">
+                <h4>2. Qual é a principal vantagem das listas encadeadas em relação a vetores?</h4>
+                <p>a) Acesso direto por índice</p>
+                <p>b) Inserção e remoção eficientes em qualquer posição</p>
+                <p>c) Uso de menos memória</p>
+                <p>d) Armazenamento sequencial de dados</p>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> b) Inserção e remoção eficientes em qualquer posição<br>
+                <strong>Explicação:</strong> Vetores têm custo alto para inserção/remoção no meio, listas encadeadas são mais eficientes.
+            </div>
+
+            <div class="question">
+                <h4>3. O que acontece com o ponteiro de uma lista quando ela está vazia?</h4>
+                <p>a) Aponta para o valor 1</p>
+                <p>b) É igual ao valor 0</p>
+                <p>c) Recebe NULL</p>
+                <p>d) Aponta para o fim da memória</p>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> c) Recebe NULL<br>
+                <strong>Explicação:</strong> NULL indica que não há elementos na lista.
+            </div>
+
+            <div class="question">
+                <h4>4. Qual função da linguagem C é usada para alocar memória dinamicamente?</h4>
+                <p>a) calloc()</p>
+                <p>b) realloc()</p>
+                <p>c) malloc()</p>
+                <p>d) assign()</p>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> c) malloc()<br>
+                <strong>Explicação:</strong> malloc() é a função padrão para alocação dinâmica de memória.
+            </div>
+
+            <div class="question">
+                <h4>5. O que a função free() faz em listas?</h4>
+                <p>a) Copia um nó</p>
+                <p>b) Cria um nó</p>
+                <p>c) Libera a memória alocada</p>
+                <p>d) Retorna o valor de um nó</p>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> c) Libera a memória alocada<br>
+                <strong>Explicação:</strong> free() é essencial para evitar vazamentos de memória.
+            </div>
+
+            <div class="question">
+                <h4>6. O que significa FIFO?</h4>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> First In, First Out (primeiro a entrar, primeiro a sair)<br>
+                <strong>Explicação:</strong> Princípio fundamental das filas.
+            </div>
+
+            <div class="question">
+                <h4>7. Em um vetor de 10 posições, qual é o índice do último elemento?</h4>
+                <p>a) 10</p>
+                <p>b) 9</p>
+                <p>c) 8</p>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> b) 9<br>
+                <strong>Explicação:</strong> Índices começam em 0, então o último elemento tem índice 9.
+            </div>
+
+            <div class="question">
+                <h4>8. Qual estrutura permite armazenar dados em linhas e colunas?</h4>
+                <p>a) Array unidimensional</p>
+                <p>b) Fila</p>
+                <p>c) Matriz</p>
+                <p>d) Lista encadeada</p>
+            </div>
+            <div class="answer">
+                <strong>Resposta:</strong> c) Matriz<br>
+                <strong>Explicação:</strong> Matrizes são estruturas bidimensionais.
+            </div>
+        </div>
+
+        <!-- 8. RESUMO EXECUTIVO -->
+        <div id="resumo" class="section">
+            <h2>8. RESUMO EXECUTIVO</h2>
+            
+            <h3>Comparação de Estruturas</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Estrutura</th>
+                        <th>Princípio</th>
+                        <th>Operações</th>
+                        <th>Vantagens</th>
+                        <th>Desvantagens</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vetor</td>
+                        <td>Acesso Direto</td>
+                        <td>Inserção/Remoção</td>
+                        <td>Acesso rápido</td>
+                        <td>Tamanho fixo</td>
+                    </tr>
+                    <tr>
+                        <td>Lista Encadeada</td>
+                        <td>Ponteiros</td>
+                        <td>Inserção/Remoção</td>
+                        <td>Tamanho dinâmico</td>
+                        <td>Sem acesso direto</td>
+                    </tr>
+                    <tr>
+                        <td>Pilha</td>
+                        <td>LIFO</td>
+                        <td>Push/Pop</td>
+                        <td>Simples</td>
+                        <td>Acesso limitado</td>
+                    </tr>
+                    <tr>
+                        <td>Fila</td>
+                        <td>FIFO</td>
+                        <td>Enqueue/Dequeue</td>
+                        <td>Ordem garantida</td>
+                        <td>Acesso limitado</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Questões Mais Comuns</h3>
+            <div class="highlight">
+                <ul>
+                    <li>O que caracteriza uma lista encadeada? → Cada nó tem valor + ponteiro</li>
+                    <li>Qual a vantagem de listas vs vetores? → Inserção/remoção eficiente</li>
+                    <li>O que significa FIFO? → First In, First Out</li>
+                    <li>O que significa LIFO? → Last In, First Out</li>
+                    <li>Qual função aloca memória? → malloc()</li>
+                    <li>Qual função libera memória? → free()</li>
+                    <li>Índice do último elemento em vetor de 10? → 9</li>
+                    <li>Ponteiro de lista vazia? → NULL</li>
+                </ul>
+            </div>
+
+            <h3>Dicas para a Prova</h3>
+            <div class="tip">
+                <ul>
+                    <li>Memorize LIFO (pilhas) e FIFO (filas)</li>
+                    <li>Entenda diferenças entre estruturas estáticas e dinâmicas</li>
+                    <li>Pratique implementações básicas em C</li>
+                    <li>Atenção aos ponteiros e NULL</li>
+                    <li>Revise vantagens/desvantagens de cada estrutura</li>
+                    <li>Teste casos extremos (vazio, um elemento, cheio)</li>
+                    <li>Sempre libere memória com free()</li>
+                    <li>Use módulo (%) em filas circulares</li>
+                </ul>
+            </div>
+
+            <div class="success">
+                <h3>🎯 DICAS FINAIS DE IMPLEMENTAÇÃO</h3>
+                <ul>
+                    <li>Sempre verifique se a estrutura está vazia antes de remover elementos</li>
+                    <li>Em filas circulares, use módulo (%) para calcular índices</li>
+                    <li>Sempre libere memória alocada dinamicamente com free()</li>
+                    <li>Use ponteiros para modificar estruturas dentro de funções</li>
+                    <li>Teste casos extremos: lista vazia, um elemento, muitos elementos</li>
+                </ul>
+            </div>
+
+            <div class="important">
+                <h3>⚠️ PONTOS CRÍTICOS PARA A PROVA</h3>
+                <ul>
+                    <li><strong>LIFO vs FIFO:</strong> Entenda a diferença fundamental</li>
+                    <li><strong>Ponteiros:</strong> NULL indica fim da lista ou lista vazia</li>
+                    <li><strong>malloc/free:</strong> Sempre libere memória alocada</li>
+                    <li><strong>Índices:</strong> Começam em 0, último elemento = tamanho-1</li>
+                    <li><strong>Estruturas:</strong> Vetores vs Listas vs Pilhas vs Filas</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 40px 0; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px;">
+            <h2>🍀 BOA SORTE NA PROVA! 🍀</h2>
+            <p>Você está preparado! Revise este material e confie no seu conhecimento.</p>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Adicionar funcionalidade de busca
+        function searchContent() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const sections = document.querySelectorAll('.section');
+            
+            sections.forEach(section => {
+                const text = section.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    section.style.display = 'block';
+                    section.style.backgroundColor = searchTerm ? '#fff3cd' : 'white';
+                } else if (searchTerm) {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'block';
+                    section.style.backgroundColor = 'white';
+                }
+            });
+        }
+
+        // Adicionar campo de busca
+        const searchDiv = document.createElement('div');
+        searchDiv.innerHTML = `
+            <div style="margin: 20px 0; text-align: center;">
+                <input type="text" id="searchInput" placeholder="🔍 Buscar no material..." 
+                       style="padding: 10px; width: 300px; border: 2px solid #3498db; border-radius: 5px; font-size: 16px;">
+                <button onclick="searchContent()" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 5px; margin-left: 10px; cursor: pointer;">
+                    Buscar
+                </button>
+            </div>
+        `;
+        document.querySelector('.container').insertBefore(searchDiv, document.querySelector('.toc'));
+    </script>
+</body>
+</html> 

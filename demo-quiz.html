@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Sistema de Prova Estrutura de Dados</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="demo-header">
+            <h1><i class="fas fa-brain"></i> Sistema de Prova - Estrutura de Dados</h1>
+            <p>Demonstração do sistema completo com 200 questões</p>
+        </header>
+
+        <div class="quiz-container">
+            <div class="quiz-setup" id="quiz-setup">
+                <h3>🎯 Configuração da Prova</h3>
+                <p class="setup-description">Personalize sua prova de acordo com suas necessidades de estudo</p>
+                
+                <div class="quiz-options">
+                    <div class="option-group">
+                        <label>📊 Número de Questões:</label>
+                        <select id="question-count">
+                            <option value="5">5 questões (Teste rápido)</option>
+                            <option value="10" selected>10 questões (Padrão)</option>
+                            <option value="15">15 questões</option>
+                            <option value="20">20 questões</option>
+                            <option value="25">25 questões</option>
+                            <option value="30">30 questões</option>
+                            <option value="40">40 questões</option>
+                            <option value="50">50 questões (Prova completa)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label>🎚️ Nível de Dificuldade:</label>
+                        <select id="difficulty">
+                            <option value="all" selected>Todas as dificuldades</option>
+                            <option value="easy">Fácil (Fundamentos)</option>
+                            <option value="medium">Médio (Conceitos)</option>
+                            <option value="hard">Difícil (Aplicação)</option>
+                            <option value="mega">Mega Difícil (Avançado)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label>📚 Tópico Específico:</label>
+                        <select id="topic">
+                            <option value="all" selected>Todos os tópicos</option>
+                            <option value="conceitos">Conceitos Fundamentais</option>
+                            <option value="listas">Listas Encadeadas</option>
+                            <option value="pilhas">Pilhas (LIFO)</option>
+                            <option value="filas">Filas (FIFO)</option>
+                            <option value="arvores">Árvores</option>
+                            <option value="grafos">Grafos</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="setup-info">
+                    <div class="info-card">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <h4>Como funciona?</h4>
+                            <p>O sistema seleciona questões aleatoriamente baseado nos filtros escolhidos. Quanto mais específicos os filtros, menos questões disponíveis.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary btn-large" onclick="startQuiz()">
+                    <i class="fas fa-play"></i>
+                    🚀 Iniciar Prova
+                </button>
+            </div>
+
+            <div class="quiz-interface" id="quiz-interface" style="display: none;">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <span id="question-counter">Questão 1 de 10</span>
+                        <span id="quiz-timer">Tempo: 00:00</span>
+                    </div>
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-container">
+                    <h3 id="question-text">Carregando questão...</h3>
+                    <div class="options-container" id="options-container">
+                        <!-- Opções serão carregadas aqui -->
+                    </div>
+                </div>
+
+                <div class="quiz-controls">
+                    <button class="btn btn-secondary" onclick="previousQuestion()" id="prev-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        Anterior
+                    </button>
+                    <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn">
+                        Próxima
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-success" onclick="finishQuiz()" id="finish-btn" style="display: none;">
+                        <i class="fas fa-check"></i>
+                        Finalizar
+                    </button>
+                </div>
+            </div>
+
+            <div class="quiz-results" id="quiz-results" style="display: none;">
+                <h3>Resultado da Prova</h3>
+                <div class="results-summary">
+                    <div class="result-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Nota: <strong id="final-score">0</strong>/10</span>
+                    </div>
+                    <div class="result-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Acertos: <strong id="correct-answers">0</strong></span>
+                    </div>
+                    <div class="result-item">
+                        <i class="fas fa-times-circle"></i>
+                        <span>Erros: <strong id="wrong-answers">0</strong></span>
+                    </div>
+                    <div class="result-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Tempo: <strong id="total-time">00:00</strong></span>
+                    </div>
+                </div>
+                <div class="performance-chart">
+                    <canvas id="performance-chart"></canvas>
+                </div>
+                <div class="quiz-actions">
+                    <button class="btn btn-primary" onclick="reviewQuiz()">
+                        <i class="fas fa-eye"></i>
+                        Revisar Respostas
+                    </button>
+                    <button class="btn btn-secondary" onclick="newQuiz()">
+                        <i class="fas fa-redo"></i>
+                        Nova Prova
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/quiz.js"></script>
+</body>
+</html> 

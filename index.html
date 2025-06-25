@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrutura de Dados - Material Completo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="loading-text">Carregando Material Completo</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>Estrutura de Dados</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#conceitos" class="nav-link">Conceitos</a>
+                <a href="#estruturas" class="nav-link">Estruturas</a>
+                <a href="#exercicios" class="nav-link">Exercícios</a>
+                <a href="#prova" class="nav-link">Prova</a>
+                <a href="#resumo" class="nav-link">Resumo</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-background">
+                <div class="hero-grid"></div>
+                <div class="hero-particles"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Estrutura de</span>
+                    <span class="title-line highlight">Dados</span>
+                </h1>
+                <p class="hero-subtitle">Material Completo - 2º Bimestre - Preparação para Prova</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-book"></i>
+                        <span>6 Estruturas</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-code"></i>
+                        <span>50+ Exercícios</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span>200 Questões</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>4 Níveis</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="scrollToSection('conceitos')">
+                        <i class="fas fa-rocket"></i>
+                        Começar
+                    </button>
+                    <button class="btn btn-secondary" onclick="scrollToSection('prova')">
+                        <i class="fas fa-clipboard-check"></i>
+                        Fazer Prova
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conceitos Section -->
+        <section id="conceitos" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Conceitos Fundamentais</h2>
+                    <p class="section-subtitle">Base teórica essencial para entender estruturas de dados</p>
+                </div>
+                
+                <div class="concepts-grid">
+                    <div class="concept-card" data-aos="fade-up">
+                        <div class="card-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Dados</h3>
+                        <p>Elementos brutos e isolados que representam aspectos da realidade. São a matéria-prima que, quando processada, se transforma em informação útil.</p>
+                        <div class="card-details">
+                            <strong>Características:</strong>
+                            <ul>
+                                <li>Representam fatos ou observações</li>
+                                <li>Podem ser processados por computadores</li>
+                                <li>São a base para a informação</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3>Estruturas Homogêneas</h3>
+                        <p>Armazenam apenas um tipo de dado. Todos os elementos têm o mesmo tipo e tamanho.</p>
+                        <div class="card-details">
+                            <strong>Exemplos:</strong>
+                            <ul>
+                                <li>Vetor de inteiros: int numeros[10]</li>
+                                <li>Array de caracteres: char nome[50]</li>
+                                <li>Matriz de float: float notas[5][3]</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h3>Estruturas Heterogêneas</h3>
+                        <p>Armazenam diferentes tipos de dados em uma única estrutura.</p>
+                        <div class="card-details">
+                            <strong>Exemplos:</strong>
+                            <ul>
+                                <li>Struct em C</li>
+                                <li>Registros</li>
+                                <li>Classes (em POO)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-icon">
+                            <i class="fas fa-vector-square"></i>
+                        </div>
+                        <h3>Vetores (Arrays)</h3>
+                        <p>Estrutura de dados linear com elementos armazenados em posições contínuas da memória.</p>
+                        <div class="card-details">
+                            <strong>Características:</strong>
+                            <ul>
+                                <li>Acesso direto por índice</li>
+                                <li>Memória contínua</li>
+                                <li>Tamanho fixo</li>
+                                <li>Alto custo para inserção/remoção no meio</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="concept-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card-icon">
+                            <i class="fas fa-table"></i>
+                        </div>
+                        <h3>Matrizes</h3>
+                        <p>Estrutura de dados bidimensional organizada em linhas e colunas.</p>
+                        <div class="card-details">
+                            <strong>Aplicações:</strong>
+                            <ul>
+                                <li>Representação de imagens</li>
+                                <li>Tabelas de dados</li>
+                                <li>Jogos (tabuleiros)</li>
+                                <li>Processamento de sinais</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="concept-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="card-icon">
+                            <i class="fas fa-memory"></i>
+                        </div>
+                        <h3>Alocação de Memória</h3>
+                        <p>Processo de reservar espaço na memória para armazenar dados.</p>
+                        <div class="card-details">
+                            <strong>Tipos:</strong>
+                            <ul>
+                                <li><strong>Estática:</strong> Tamanho definido em compilação</li>
+                                <li><strong>Dinâmica:</strong> Tamanho definido em execução</li>
+                                <li><strong>Stack:</strong> Variáveis locais</li>
+                                <li><strong>Heap:</strong> malloc/free</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estruturas Section -->
+        <section id="estruturas" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Estruturas de Dados</h2>
+                    <p class="section-subtitle">As principais estruturas e suas implementações</p>
+                </div>
+                
+                <div class="structures-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-btn active" data-tab="listas">
+                            <i class="fas fa-link"></i>
+                            Listas
+                        </button>
+                        <button class="tab-btn" data-tab="pilhas">
+                            <i class="fas fa-layer-group"></i>
+                            Pilhas
+                        </button>
+                        <button class="tab-btn" data-tab="filas">
+                            <i class="fas fa-stream"></i>
+                            Filas
+                        </button>
+                        <button class="tab-btn" data-tab="arvores">
+                            <i class="fas fa-tree"></i>
+                            Árvores
+                        </button>
+                        <button class="tab-btn" data-tab="grafos">
+                            <i class="fas fa-project-diagram"></i>
+                            Grafos
+                        </button>
+                        <button class="tab-btn" data-tab="comparacao">
+                            <i class="fas fa-chart-bar"></i>
+                            Comparação
+                        </button>
+                    </div>
+                    
+                    <div class="tab-content">
+                        <div id="listas" class="tab-pane active">
+                            <div class="structure-content">
+                                <div class="structure-info">
+                                    <h3>Listas Encadeadas</h3>
+                                    <div class="structure-details">
+                                        <h4>Características:</h4>
+                                        <ul>
+                                            <li>Cada nó contém valor + ponteiro</li>
+                                            <li>Elementos não contínuos na memória</li>
+                                            <li>Tamanho dinâmico</li>
+                                            <li>Inserção/remoção eficiente</li>
+                                            <li>Sem acesso direto por índice</li>
+                                        </ul>
+                                        
+                                        <h4>Tipos:</h4>
+                                        <ul>
+                                            <li><strong>Simples:</strong> Um ponteiro por nó</li>
+                                            <li><strong>Dupla:</strong> Dois ponteiros por nó</li>
+                                            <li><strong>Circular:</strong> Último aponta para o primeiro</li>
+                                        </ul>
+
+                                        <h4>Operações Principais:</h4>
+                                        <ul>
+                                            <li>Inserção no início/final/meio</li>
+                                            <li>Remoção de elementos</li>
+                                            <li>Busca de elementos</li>
+                                            <li>Inversão da lista</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="structure-code">
+                                    <h4>Estrutura Básica:</h4>
+                                    <pre><code>typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+// Funções principais
+Node* createNode(int value);
+void insertAtBeginning(Node** head, int value);
+void insertAtEnd(Node** head, int value);
+void deleteNode(Node** head, int value);
+void printList(Node* head);
+int searchNode(Node* head, int value);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="pilhas" class="tab-pane">
+                            <div class="structure-content">
+                                <div class="structure-info">
+                                    <h3>Pilhas (LIFO)</h3>
+                                    <div class="structure-details">
+                                        <h4>Princípio:</h4>
+                                        <p><strong>LIFO:</strong> Last In, First Out (último a entrar, primeiro a sair)</p>
+                                        
+                                        <h4>Operações:</h4>
+                                        <ul>
+                                            <li><strong>PUSH:</strong> Empilhar elemento</li>
+                                            <li><strong>POP:</strong> Desempilhar elemento</li>
+                                            <li><strong>PEEK/TOP:</strong> Ver elemento do topo</li>
+                                            <li><strong>ISEMPTY:</strong> Verificar se está vazia</li>
+                                            <li><strong>ISFULL:</strong> Verificar se está cheia</li>
+                                        </ul>
+
+                                        <h4>Aplicações:</h4>
+                                        <ul>
+                                            <li>Chamadas de função (call stack)</li>
+                                            <li>Desfazer operações (undo)</li>
+                                            <li>Avaliação de expressões</li>
+                                            <li>Navegação em navegadores</li>
+                                            <li>Verificação de parênteses</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="structure-code">
+                                    <h4>Implementação com Vetor:</h4>
+                                    <pre><code>#define MAX 100
+typedef struct {
+    int data[MAX];
+    int top;
+} Stack;
+
+void initStack(Stack* s) {
+    s->top = -1;
+}
+
+void push(Stack* s, int value) {
+    if (s->top < MAX-1) {
+        s->data[++s->top] = value;
+    }
+}
+
+int pop(Stack* s) {
+    if (s->top >= 0) {
+        return s->data[s->top--];
+    }
+    return -1; // erro
+}
+
+int peek(Stack* s) {
+    if (s->top >= 0) {
+        return s->data[s->top];
+    }
+    return -1;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="filas" class="tab-pane">
+                            <div class="structure-content">
+                                <div class="structure-info">
+                                    <h3>Filas (FIFO)</h3>
+                                    <div class="structure-details">
+                                        <h4>Princípio:</h4>
+                                        <p><strong>FIFO:</strong> First In, First Out (primeiro a entrar, primeiro a sair)</p>
+                                        
+                                        <h4>Operações:</h4>
+                                        <ul>
+                                            <li><strong>ENQUEUE:</strong> Enfileirar elemento</li>
+                                            <li><strong>DEQUEUE:</strong> Desenfileirar elemento</li>
+                                            <li><strong>FRONT:</strong> Ver primeiro elemento</li>
+                                            <li><strong>REAR:</strong> Ver último elemento</li>
+                                            <li><strong>ISEMPTY:</strong> Verificar se está vazia</li>
+                                        </ul>
+
+                                        <h4>Tipos:</h4>
+                                        <ul>
+                                            <li><strong>Simples:</strong> Implementação básica</li>
+                                            <li><strong>Circular:</strong> Reutiliza espaços vazios</li>
+                                            <li><strong>Prioridade:</strong> Elementos com prioridade</li>
+                                            <li><strong>Dupla:</strong> Inserção/remoção nas duas extremidades</li>
+                                        </ul>
+
+                                        <h4>Aplicações:</h4>
+                                        <ul>
+                                            <li>Fila de pessoas</li>
+                                            <li>Fila de impressão</li>
+                                            <li>Buffers de rede</li>
+                                            <li>Filas de processos</li>
+                                            <li>Sistemas de atendimento</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="structure-code">
+                                    <h4>Fila Circular:</h4>
+                                    <pre><code>#define MAX 10
+typedef struct {
+    int data[MAX];
+    int front, rear;
+    int size;
+} Queue;
+
+void initQueue(Queue* q) {
+    q->front = 0;
+    q->rear = -1;
+    q->size = 0;
+}
+
+void enqueue(Queue* q, int value) {
+    if (!isFull(q)) {
+        q->rear = (q->rear + 1) % MAX;
+        q->data[q->rear] = value;
+        q->size++;
+    }
+}
+
+int dequeue(Queue* q) {
+    if (!isEmpty(q)) {
+        int value = q->data[q->front];
+        q->front = (q->front + 1) % MAX;
+        q->size--;
+        return value;
+    }
+    return -1;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="arvores" class="tab-pane">
+                            <div class="structure-content">
+                                <div class="structure-info">
+                                    <h3>Árvores</h3>
+                                    <div class="structure-details">
+                                        <h4>Características:</h4>
+                                        <ul>
+                                            <li>Estrutura hierárquica</li>
+                                            <li>Um nó raiz</li>
+                                            <li>Nós filhos e pais</li>
+                                            <li>Nós folha (sem filhos)</li>
+                                        </ul>
+                                        
+                                        <h4>Tipos:</h4>
+                                        <ul>
+                                            <li><strong>Árvore Binária:</strong> Máximo 2 filhos</li>
+                                            <li><strong>Árvore Binária de Busca:</strong> Ordenada</li>
+                                            <li><strong>Árvore AVL:</strong> Balanceada</li>
+                                            <li><strong>Heap:</strong> Árvore de prioridade</li>
+                                        </ul>
+
+                                        <h4>Percursos:</h4>
+                                        <ul>
+                                            <li><strong>Pré-ordem:</strong> Raiz → Esquerda → Direita</li>
+                                            <li><strong>Em-ordem:</strong> Esquerda → Raiz → Direita</li>
+                                            <li><strong>Pós-ordem:</strong> Esquerda → Direita → Raiz</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="structure-code">
+                                    <h4>Estrutura de Nó:</h4>
+                                    <pre><code>typedef struct TreeNode {
+    int data;
+    struct TreeNode* left;
+    struct TreeNode* right;
+} TreeNode;
+
+// Funções básicas
+TreeNode* createNode(int value);
+void insertNode(TreeNode** root, int value);
+TreeNode* searchNode(TreeNode* root, int value);
+void inorderTraversal(TreeNode* root);
+void preorderTraversal(TreeNode* root);
+void postorderTraversal(TreeNode* root);</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="grafos" class="tab-pane">
+                            <div class="structure-content">
+                                <div class="structure-info">
+                                    <h3>Grafos</h3>
+                                    <div class="structure-details">
+                                        <h4>Características:</h4>
+                                        <ul>
+                                            <li>Conjunto de vértices e arestas</li>
+                                            <li>Representa relacionamentos</li>
+                                            <li>Estrutura não-linear</li>
+                                        </ul>
+                                        
+                                        <h4>Tipos:</h4>
+                                        <ul>
+                                            <li><strong>Dirigido:</strong> Arestas com direção</li>
+                                            <li><strong>Não-dirigido:</strong> Arestas sem direção</li>
+                                            <li><strong>Ponderado:</strong> Arestas com peso</li>
+                                            <li><strong>Cíclico/Acíclico:</strong> Com/sem ciclos</li>
+                                        </ul>
+
+                                        <h4>Representações:</h4>
+                                        <ul>
+                                            <li><strong>Matriz de Adjacência:</strong> O(n²)</li>
+                                            <li><strong>Lista de Adjacência:</strong> O(V+E)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="structure-code">
+                                    <h4>Matriz de Adjacência:</h4>
+                                    <pre><code>#define MAX_VERTICES 100
+
+typedef struct {
+    int vertices;
+    int adjMatrix[MAX_VERTICES][MAX_VERTICES];
+} Graph;
+
+void initGraph(Graph* g, int vertices) {
+    g->vertices = vertices;
+    for (int i = 0; i < vertices; i++) {
+        for (int j = 0; j < vertices; j++) {
+            g->adjMatrix[i][j] = 0;
+        }
+    }
+}
+
+void addEdge(Graph* g, int src, int dest) {
+    g->adjMatrix[src][dest] = 1;
+    g->adjMatrix[dest][src] = 1; // Para grafo não-dirigido
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="comparacao" class="tab-pane">
+                            <div class="comparison-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Estrutura</th>
+                                            <th>Princípio</th>
+                                            <th>Acesso</th>
+                                            <th>Inserção</th>
+                                            <th>Busca</th>
+                                            <th>Vantagens</th>
+                                            <th>Desvantagens</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Vetor</td>
+                                            <td>Sequencial</td>
+                                            <td>O(1)</td>
+                                            <td>O(n)</td>
+                                            <td>O(n)</td>
+                                            <td>Acesso rápido</td>
+                                            <td>Tamanho fixo</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lista</td>
+                                            <td>Ponteiros</td>
+                                            <td>O(n)</td>
+                                            <td>O(1)</td>
+                                            <td>O(n)</td>
+                                            <td>Tamanho dinâmico</td>
+                                            <td>Sem acesso direto</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pilha</td>
+                                            <td>LIFO</td>
+                                            <td>O(1)</td>
+                                            <td>O(1)</td>
+                                            <td>O(1)</td>
+                                            <td>Simples</td>
+                                            <td>Acesso limitado</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fila</td>
+                                            <td>FIFO</td>
+                                            <td>O(1)</td>
+                                            <td>O(1)</td>
+                                            <td>O(1)</td>
+                                            <td>Ordem garantida</td>
+                                            <td>Acesso limitado</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Árvore Binária</td>
+                                            <td>Hierárquico</td>
+                                            <td>O(log n)</td>
+                                            <td>O(log n)</td>
+                                            <td>O(log n)</td>
+                                            <td>Busca eficiente</td>
+                                            <td>Pode desbalancear</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Grafo</td>
+                                            <td>Relacionamentos</td>
+                                            <td>O(V+E)</td>
+                                            <td>O(1)</td>
+                                            <td>O(V+E)</td>
+                                            <td>Flexível</td>
+                                            <td>Complexo</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exercícios Section -->
+        <section id="exercicios" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Exercícios Práticos</h2>
+                    <p class="section-subtitle">Pratique implementações e conceitos</p>
+                </div>
+                
+                <div class="exercises-grid">
+                    <div class="exercise-card" data-aos="fade-up">
+                        <div class="exercise-header">
+                            <h3>Lista Encadeada</h3>
+                            <span class="difficulty easy">Fácil</span>
+                        </div>
+                        <p>Implemente uma lista encadeada simples com inserção e remoção.</p>
+                        <button class="btn btn-outline" onclick="showExercise('lista')">
+                            Ver Exercício
+                        </button>
+                    </div>
+                    
+                    <div class="exercise-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="exercise-header">
+                            <h3>Pilha</h3>
+                            <span class="difficulty medium">Médio</span>
+                        </div>
+                        <p>Crie uma pilha com operações push, pop e peek.</p>
+                        <button class="btn btn-outline" onclick="showExercise('pilha')">
+                            Ver Exercício
+                        </button>
+                    </div>
+                    
+                    <div class="exercise-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="exercise-header">
+                            <h3>Fila Circular</h3>
+                            <span class="difficulty hard">Difícil</span>
+                        </div>
+                        <p>Implemente uma fila circular usando vetor.</p>
+                        <button class="btn btn-outline" onclick="showExercise('fila')">
+                            Ver Exercício
+                        </button>
+                    </div>
+
+                    <div class="exercise-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="exercise-header">
+                            <h3>Árvore Binária</h3>
+                            <span class="difficulty hard">Difícil</span>
+                        </div>
+                        <p>Implemente uma árvore binária de busca.</p>
+                        <button class="btn btn-outline" onclick="showExercise('arvore')">
+                            Ver Exercício
+                        </button>
+                    </div>
+
+                    <div class="exercise-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="exercise-header">
+                            <h3>Grafo</h3>
+                            <span class="difficulty mega">Mega Difícil</span>
+                        </div>
+                        <p>Implemente um grafo com matriz de adjacência.</p>
+                        <button class="btn btn-outline" onclick="showExercise('grafo')">
+                            Ver Exercício
+                        </button>
+                    </div>
+
+                    <div class="exercise-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="exercise-header">
+                            <h3>Algoritmos de Ordenação</h3>
+                            <span class="difficulty medium">Médio</span>
+                        </div>
+                        <p>Implemente bubble sort, quick sort e merge sort.</p>
+                        <button class="btn btn-outline" onclick="showExercise('ordenacao')">
+                            Ver Exercício
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prova Section -->
+        <section id="prova" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Prova de Múltipla Escolha</h2>
+                    <p class="section-subtitle">Teste seus conhecimentos com 200 questões aleatorizadas</p>
+                </div>
+
+                <div class="quiz-container">
+                    <div class="quiz-setup" id="quiz-setup">
+                        <h3>🎯 Configuração da Prova</h3>
+                        <p class="setup-description">Personalize sua prova de acordo com suas necessidades de estudo</p>
+                        
+                        <div class="quiz-options">
+                            <div class="option-group">
+                                <label>📊 Número de Questões:</label>
+                                <select id="question-count">
+                                    <option value="5">5 questões (Teste rápido)</option>
+                                    <option value="10" selected>10 questões (Padrão)</option>
+                                    <option value="15">15 questões</option>
+                                    <option value="20">20 questões</option>
+                                    <option value="25">25 questões</option>
+                                    <option value="30">30 questões</option>
+                                    <option value="40">40 questões</option>
+                                    <option value="50">50 questões (Prova completa)</option>
+                                </select>
+                            </div>
+                            <div class="option-group">
+                                <label>🎚️ Nível de Dificuldade:</label>
+                                <select id="difficulty">
+                                    <option value="all" selected>Todas as dificuldades</option>
+                                    <option value="easy">Fácil (Fundamentos)</option>
+                                    <option value="medium">Médio (Conceitos)</option>
+                                    <option value="hard">Difícil (Aplicação)</option>
+                                    <option value="mega">Mega Difícil (Avançado)</option>
+                                </select>
+                            </div>
+                            <div class="option-group">
+                                <label>📚 Tópico Específico:</label>
+                                <select id="topic">
+                                    <option value="all" selected>Todos os tópicos</option>
+                                    <option value="conceitos">Conceitos Fundamentais</option>
+                                    <option value="listas">Listas Encadeadas</option>
+                                    <option value="pilhas">Pilhas (LIFO)</option>
+                                    <option value="filas">Filas (FIFO)</option>
+                                    <option value="arvores">Árvores</option>
+                                    <option value="grafos">Grafos</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setup-info">
+                            <div class="info-card">
+                                <i class="fas fa-info-circle"></i>
+                                <div>
+                                    <h4>Como funciona?</h4>
+                                    <p>O sistema seleciona questões aleatoriamente baseado nos filtros escolhidos. Quanto mais específicos os filtros, menos questões disponíveis.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-large" onclick="startQuiz()">
+                            <i class="fas fa-play"></i>
+                            🚀 Iniciar Prova
+                        </button>
+                    </div>
+
+                    <div class="quiz-interface" id="quiz-interface" style="display: none;">
+                        <div class="quiz-header">
+                            <div class="quiz-info">
+                                <span id="question-counter">Questão 1 de 10</span>
+                                <span id="quiz-timer">Tempo: 00:00</span>
+                            </div>
+                            <div class="quiz-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="question-container">
+                            <h3 id="question-text">Carregando questão...</h3>
+                            <div class="options-container" id="options-container">
+                                <!-- Opções serão carregadas aqui -->
+                            </div>
+                        </div>
+
+                        <div class="quiz-controls">
+                            <button class="btn btn-secondary" onclick="previousQuestion()" id="prev-btn">
+                                <i class="fas fa-arrow-left"></i>
+                                Anterior
+                            </button>
+                            <button class="btn btn-primary" onclick="nextQuestion()" id="next-btn">
+                                Próxima
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button class="btn btn-success" onclick="finishQuiz()" id="finish-btn" style="display: none;">
+                                <i class="fas fa-check"></i>
+                                Finalizar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="quiz-results" id="quiz-results" style="display: none;">
+                        <h3>Resultado da Prova</h3>
+                        <div class="results-summary">
+                            <div class="result-item">
+                                <i class="fas fa-trophy"></i>
+                                <span>Nota: <strong id="final-score">0</strong>/10</span>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Acertos: <strong id="correct-answers">0</strong></span>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-times-circle"></i>
+                                <span>Erros: <strong id="wrong-answers">0</strong></span>
+                            </div>
+                            <div class="result-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Tempo: <strong id="total-time">00:00</strong></span>
+                            </div>
+                        </div>
+                        <div class="performance-chart">
+                            <canvas id="performance-chart"></canvas>
+                        </div>
+                        <div class="quiz-actions">
+                            <button class="btn btn-primary" onclick="reviewQuiz()">
+                                <i class="fas fa-eye"></i>
+                                Revisar Respostas
+                            </button>
+                            <button class="btn btn-secondary" onclick="newQuiz()">
+                                <i class="fas fa-redo"></i>
+                                Nova Prova
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resumo Section -->
+        <section id="resumo" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Resumo Executivo</h2>
+                    <p class="section-subtitle">Informações essenciais para a prova</p>
+                </div>
+                
+                <div class="summary-grid">
+                    <div class="summary-card">
+                        <h3>Questões Mais Comuns</h3>
+                        <ul>
+                            <li>Lista encadeada → valor + ponteiro</li>
+                            <li>Vantagem listas vs vetores → inserção/remoção eficiente</li>
+                            <li>FIFO → First In, First Out</li>
+                            <li>LIFO → Last In, First Out</li>
+                            <li>malloc() → aloca memória dinamicamente</li>
+                            <li>free() → libera memória alocada</li>
+                            <li>NULL → indica ponteiro nulo</li>
+                            <li>Índice último elemento vetor → tamanho-1</li>
+                            <li>Pilha vazia → top = -1</li>
+                            <li>Fila circular → uso do operador módulo (%)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <h3>Dicas para a Prova</h3>
+                        <ul>
+                            <li>Memorize LIFO (pilhas) e FIFO (filas)</li>
+                            <li>Entenda diferenças entre estruturas estáticas e dinâmicas</li>
+                            <li>Pratique implementações básicas em C</li>
+                            <li>Atenção aos ponteiros e NULL</li>
+                            <li>Revise vantagens/desvantagens de cada estrutura</li>
+                            <li>Teste casos extremos (vazio, um elemento, cheio)</li>
+                            <li>Sempre libere memória com free()</li>
+                            <li>Use módulo (%) em filas circulares</li>
+                            <li>Entenda complexidade de tempo das operações</li>
+                            <li>Pratique algoritmos de ordenação</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h3>Complexidade de Tempo</h3>
+                        <ul>
+                            <li><strong>Vetor:</strong> Acesso O(1), Inserção O(n)</li>
+                            <li><strong>Lista:</strong> Acesso O(n), Inserção O(1)</li>
+                            <li><strong>Pilha:</strong> Push/Pop O(1)</li>
+                            <li><strong>Fila:</strong> Enqueue/Dequeue O(1)</li>
+                            <li><strong>Árvore Binária:</strong> Busca O(log n)</li>
+                            <li><strong>Grafo:</strong> Busca O(V+E)</li>
+                        </ul>
+                    </div>
+
+                    <div class="summary-card">
+                        <h3>Pontos Críticos</h3>
+                        <ul>
+                            <li><strong>Vazamento de memória:</strong> Sempre use free()</li>
+                            <li><strong>Ponteiros nulos:</strong> Sempre verifique NULL</li>
+                            <li><strong>Índices:</strong> Começam em 0, último = tamanho-1</li>
+                            <li><strong>Fila circular:</strong> Use (rear + 1) % MAX</li>
+                            <li><strong>Pilha:</strong> Verifique se está vazia antes de pop</li>
+                            <li><strong>Lista:</strong> Atualize ponteiros corretamente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-brain"></i>
+                    <span>Estrutura de Dados</span>
+                </div>
+                <p>Material de estudo completo para o 2º bimestre</p>
+                <div class="footer-stats">
+                    <span>200 Questões</span>
+                    <span>•</span>
+                    <span>6 Estruturas</span>
+                    <span>•</span>
+                    <span>4 Níveis</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for Exercises -->
+    <div id="exercise-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Exercício</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html> 
